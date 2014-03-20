@@ -95,9 +95,13 @@
   a.title {color: $primary_text_color;}
   a.title:visited:not(.badge-notification) {color: lighten($primary_text_color, 35%);}
 
+  thead {
+    border-bottom: 1px solid $primary_border_color;
+  }
+
   > tbody > tr {
     &:nth-child(odd) {
-      background-color: lighten($secondary_background_color, 77%);
+      background-color: $topic-list-odd;
     }
     &.archived a {
       opacity: 0.6;
@@ -239,7 +243,7 @@
     @include unselectable;
   }
   .likes {
-    width: 65px;
+    width: 45px;
   }
   .views {
     width: 65px;
