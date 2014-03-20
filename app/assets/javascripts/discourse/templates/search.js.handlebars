@@ -2,7 +2,7 @@
 {{#unless loading}}
   {{#unless noResults}}
     {{#each resultType in content}}
-      <ul>
+      <ul class="results d-dropdown">
         <li class='heading'>
           {{resultType.name}}
           {{#if resultType.more}}
@@ -17,10 +17,11 @@
       </ul>
     {{/each}}
   {{else}}
-    <div class='no-results'>
+    <div class='no-results d-dropdown'>
       {{i18n search.no_results}}
     </div>
   {{/unless}}
+  <div class='searching'><i class="fa fa-search"></i></div>
 {{else}}
 <div class='searching'><i class='fa fa-spinner fa-spin'></i></div>
 {{/unless}}

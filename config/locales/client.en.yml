@@ -533,7 +533,7 @@ en:
       reply_here: "Reply Here"
       reply: "Reply"
       cancel: "Cancel"
-      create_topic: "Create Topic"
+      create_topic: "New Topic"
       create_pm: "Create Private Message"
       title: "Or press Ctrl+Enter"
 
@@ -614,7 +614,7 @@ en:
 
     search:
       title: "search for topics, posts, users, or categories"
-      placeholder: "type your search terms here"
+      placeholder: "Search"
       no_results: "No results found."
       searching: "Searching ..."
 
@@ -670,7 +670,7 @@ en:
 
     topic:
       filter_to: "{{post_count}} posts in topic"
-      create: 'Create Topic'
+      create: 'New topic'
       create_long: 'Create a new Topic'
       private_message: 'Start a private message'
       list: 'Topics'

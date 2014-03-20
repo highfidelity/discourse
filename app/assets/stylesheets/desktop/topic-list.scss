@@ -9,34 +9,64 @@
 // --------------------------------------------------
 
 .list-controls {
-  .nav {
-    float: left;
-    margin-bottom: 18px;
+  @include span(2 of 12);
+
+  ol.category-breadcrumb {
+    width: 100%;
+    &:after{
+      content: "";
+      background: $primary_border_color;
+      width: 70px;
+      height: 1px;
+      display: block;
+      clear: both;
+      float: left;
+      margin: 10px 0;
+    }
   }
 
-  .btn {
-    float: right;
-    margin-left: 8px;
-    margin-bottom: 10px;
-    font-size: 16px;
-    font-weight: normal;
+  .nav {
+    float: left;
+    margin-bottom: 20px;
+    li{
+      width: 100%;
+      display: block;
+      a{
+        background: none !important;
+        color: $orange;
+        font-size: 18px;
+        line-height: 1em;
+        margin: 5px 0;
+        padding: 0;
+      }
+      &.active a{
+        color: $black;
+      }
+    }
   }
 
   a.badge-category {
-    padding: 3px 12px;
-    font-size: 16px;
-
-    &.category-dropdown-button {
-      height: 24px;
-      padding: 3px 9px;
-      i { height: 20px; }
+    padding: 0;
+    font-size: 20px;
+    float: none;
+    display: block;
+    line-height: 1em;
+    text-transform: capitalize;
+    margin: 8px 0;
+    background: none !important;
+    color: $orange !important;
+    font-weight: normal;
+    font-family: $proxima-nova-bold;
+    .fa{
+      font-size: 0.8em;
     }
-
+    &.top{
+      color: $black !important;
+    }
   }
 
-  .badge-category {
-    font-weight: normal;
-    text-transform: capitalize;
+  a:hover{
+    color: $black !important;
   }
 
 }
@@ -65,9 +95,13 @@
   a.title {color: $primary_text_color;}
   a.title:visited:not(.badge-notification) {color: lighten($primary_text_color, 35%);}
 
+  thead {
+    border-bottom: 1px solid $primary_border_color;
+  }
+
   > tbody > tr {
     &:nth-child(odd) {
-      background-color: lighten($secondary_background_color, 77%);
+      background-color: $topic-list-odd;
     }
     &.archived a {
       opacity: 0.6;
@@ -209,7 +243,7 @@
     @include unselectable;
   }
   .likes {
-    width: 65px;
+    width: 45px;
   }
   .views {
     width: 65px;
@@ -431,8 +465,6 @@
 // --------------------------------------------------
 
 .list-controls {
-  border-bottom: 1px solid $primary_border_color;
-
   .home {
     background-color: lighten($secondary_background_color, 76%);
     color: $primary_text_color;
@@ -454,9 +486,9 @@
       opacity: 0.8;
     }
   }
-  clear: both;
 }
 #list-area {
+  @include span(10 of 12);
   margin-bottom: 300px;
 
   h2 {
@@ -500,12 +532,12 @@ ol.category-breadcrumb {
   display: block;
   float: left;
   list-style: none;
-  margin: 0 10px 0 0;
+  margin: 0;
   padding: 0;
 
   li {
     float: left;
-    margin-right: 5px;
+    display: block;
   }
 }
 

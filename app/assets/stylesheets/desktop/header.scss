@@ -11,14 +11,13 @@
   top: 0;
   left: 0;
   z-index: 1000;
-  border-bottom: 1px solid $primary_border_color;
   background-color: $primary_background_color;
-  padding-top: 3px;
   .docked & {
     position: fixed;
   }
   .contents {
-    margin: 10px 0;
+    border-bottom: 1px solid $primary_border_color;
+    padding: 22px 0;
   }
   .title {
     display: table;
@@ -30,29 +29,189 @@
     }
   }
   #site-logo {
-    max-width: 122px;
-    max-height: 40px;
+    width: 68px;
   }
+
+  // Search
+  #search-dropdown {
+    float: left;
+    padding: 18px 0 0 85px;
+    position: relative;
+    #search-term{
+        width: 300px;
+        height: 20px;
+        font-size: 16px;
+        border: 1px solid $primary_border_color;
+        border-radius: 4px;
+        display: block;
+        padding: 5px 25px 5px 15px;
+        @include box-shadow(none);
+        &:focus{
+           border: 1px solid darken($primary_border_color, 10%);
+        }
+    }
+  }
+  // Search loading
+  .searching {
+    display: block;
+    position: absolute;
+    top: 24px;
+    right: 10px;
+    color: darken($primary_border_color, 20%);
+    font-size: 18px;
+    i.fa-search{
+        color: $orange;
+    }
+  }
+  // Search results
+  ul.results {
+    background: $white;
+    width: 79.7%;
+    position: absolute;
+    top: 105%;
+    left: 85px;
+    border: 1px solid $primary_border_color;
+    border-top: 0;
+    @include box-shadow(0 1px 3px $primary_border_color);
+    margin: 0;
+    list-style: none;
+    z-index: 100;
+    overflow: initial;
+    &:before, &:after {
+        content: "";
+        width: 0px;
+        height: 0px;
+        display: block;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+      }
+      &:before {
+        top: -8px;
+        z-index: 1101;
+        border-bottom: 8px solid darken($primary_border_color, 5%);
+      }
+      &:after {
+        top: -7px;
+        z-index: 1102;
+        border-bottom: 8px solid $white;
+      }
+  }
+  li {
+    padding: 5px;
+    font-size: 13px;
+    line-height: 16px;
+  }
+  .heading {
+    border-top: 1px solid $primary_border_color;
+    border-bottom: 1px solid $primary_border_color;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  .selected {
+    background-color: $header-item-highlight;
+  }
+  // Search no-results
+  .no-results {
+    background: $white;
+    width: 77.5%;
+    position: absolute;
+    top: 105%;
+    left: 85px;
+    border: 1px solid $primary_border_color;
+    @include box-shadow(0 1px 3px $primary_border_color);
+    padding: 5px;
+    z-index: 100;
+    overflow: initial;
+    &:before, &:after {
+        content: "";
+        width: 0px;
+        height: 0px;
+        display: block;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+      }
+      &:before {
+        top: -8px;
+        z-index: 1101;
+        border-bottom: 8px solid darken($primary_border_color, 5%);
+      }
+      &:after {
+        top: -7px;
+        z-index: 1102;
+        border-bottom: 8px solid $white;
+      }
+  }
+  .filter {
+    float: right;
+  }
+
+
+  // New Topic Button
+  #new-topic-button{
+    float: left;
+    padding: 18px 0 0 14px;
+    #create-topic {
+        background: $white;
+        padding: 5px 15px;
+        border: 1px solid darken($primary_border_color, 5%);
+        color: $orange;
+        border-radius: 4px;
+        font-weight: bold;
+        line-height: 20px;
+        @include transition(all 200ms linear);
+        &:hover {
+            background: $orange;
+            color: $white;
+            border-color: $orange;
+        }
+        &:active {
+            background: lighten($orange, 10%);
+        }
+    }
+  }
+
+
   .fa-home {
     font-size: 20px;
     line-height: 40px;
     padding-right: 3px;
     padding-top: 3px;
   }
+
+  // user info
   .panel {
     float: right;
     position: relative;
+    padding: 12px 0 0;
   }
   .current-username {
     float: left;
     a {
-      color: $secondary_text_color;
+      color: $nav-button-color;
       font-size: 14px;
       display:block;
-      margin-top: 10px;
+      margin: 12px 0;
     }
     button {
-      margin-top: 9px;
+        background: $orange;
+        border-radius: 2px;
+        color: $white;
+        border: 0;
+        margin-top: 9px;
+        &:hover {
+            background: lighten($orange, 10%);
+        }
+        &:active {
+            background: darken($orange, 10%);
+        }
     }
   }
   .icons {
@@ -65,55 +224,52 @@
     }
     .icon {
       display: block;
-      padding: 3px;
       color: $nav-button-color;
       text-decoration: none;
       cursor: pointer;
-      border-top: 1px solid transparent;
-      border-left: 1px solid transparent;
-      border-right: 1px solid transparent;
-
-
+      border: 1px solid $primary_border_color;
+      border-radius: 4px;
       &:hover {
-        color: $nav-button-color-hover;
-        background-color: $nav-button-background-color-hover;
-        border-top: 1px solid transparent;
-        border-left: 1px solid transparent;
-        border-right: 1px solid transparent;
+        color: $orange;
       }
       &:active {
-        color: $nav-button-color-active;
-        background-color: $nav-button-background-color-active;
+        color: $white;
+        background-color: $orange;
       }
     }
     .active .icon {
       position: relative;
-      color: #7b7b7b;
+      color: $orange;
       background-color: $primary_background_color;
       cursor: default;
-      border-top: 1px solid $primary_border_color;
-      border-left: 1px solid $primary_border_color;
-      border-right: 1px solid $primary_border_color;
-      &:after {
+      &:before, &:after {
+        content: "";
+        width: 0px;
+        height: 0px;
         display: block;
         position: absolute;
-        top: 100%;
         left: 0;
-        z-index: 1101;
-        width: 100%;
-        height: 0;
-        content: "";
-        border-top: 1px solid $tertiary_border_color;
+        right: 0;
+        margin: auto;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
       }
-      &:hover {
-      border-bottom: none;
+      &:before {
+        top: 105%;
+        z-index: 1101;
+        border-bottom: 8px solid darken($primary_border_color, 5%);
+      }
+      &:after {
+        top: 110%;
+        z-index: 1102;
+        border-bottom: 8px solid $white;
       }
     }
     [class^="fa fa-"] {
-      width: 32px;
-      height: 32px;
+      width: 30px;
+      height: 30px;
       font-size: 20px;
-      line-height: 32px;
+      line-height: 30px;
       display: inline-block;
     }
     .notifications {
@@ -133,6 +289,13 @@
       left: -4px;
       background-color: $success_text_color;
     }
+    // user mini avatar
+    #current-user{
+        border: 0;
+        img {
+            border-radius: 50px;
+        }
+    }
   }
   .flagged-posts {
     background-color: $warning_text_color;
@@ -144,26 +307,25 @@
 }
 
 #main-outlet {
-  padding-top: 82px;
+  padding-top: 115px;
 }
 
 // Dropdowns
 // --------------------------------------------------
 
 .d-dropdown {
-  display: none;
+  display: inline-block;
   overflow: hidden;
   width: 320px;
   position: absolute;
-  top: 100%;
+  top: 104%;
   right: 0;
   z-index: 1100;
-  border: 1px solid $primary_border_color;
   background-color: $primary_background_color;
-  @include box-shadow(0 2px 2px rgba($primary_shadow_color, .4));
+  border: 1px solid $primary_border_color;
+  @include box-shadow(0 1px 3px $primary_border_color);
 
   // Common
-
   ul {
     margin: 0;
     list-style: none;
@@ -172,13 +334,9 @@
     padding: 5px;
     font-size: 13px;
     line-height: 16px;
-    .fa {
-      margin-right: 3px;
-    }
   }
   .heading {
     border-top: 1px solid $primary_border_color;
-
     border-bottom: 1px solid $primary_border_color;
     color: $primary_text_color;
     font-weight: bold;
@@ -190,7 +348,6 @@
   }
 
   // Notifications
-
   &#notifications-dropdown {
     .fa {
       color: lighten($primary_text_color, 50%);
@@ -206,31 +363,7 @@
     }
   }
 
-  // Search
-
-  input[type='text'] {
-    width: 298px;
-    height: 22px;
-    margin: 5px;
-    padding: 5px;
-  }
-  .searching {
-    display: block;
-    position: absolute;
-    top: 13px;
-    right: 13px;
-    color: lighten($primary_text_color, 50%);
-    font-size: 18px;
-  }
-  .no-results {
-    padding: 0 5px 5px;
-  }
-  .filter {
-    float: right;
-  }
-
   // Categories
-
   .category {
     float: left;
     background-color: transparent;

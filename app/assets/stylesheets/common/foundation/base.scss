@@ -20,6 +20,7 @@ a {
   color: $link-color;
   text-decoration: none;
   cursor: pointer;
+  @include transition(all 200ms linear);
   &:visited {
     color: $link-color-visited;
   }
@@ -55,7 +56,7 @@ dd {
 
 
 .cooked ul, .cooked ol, .cooked dd {
-  clear: both;  
+  clear: both;
 }
 
 li {

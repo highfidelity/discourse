@@ -1,7 +1,22 @@
 <div class='container'>
   <div class='contents clearfix'>
 
+    {{!-- Logo --}}
     {{home-logo minimized=showExtraInfo}}
+
+    {{!-- Search --}}
+    {{render search}}
+
+    {{!-- New Topic button --}}
+    {{#if Discourse.loginRequired}}
+      <div id="new-topic-button">
+        <button id="create-topic" class='btn' {{action showLogin}}><i class='fa fa-plus'></i>{{i18n topic.create}}</button>
+      </div>
+    {{else}}
+      <div id="new-topic-button">
+        <button id="create-topic" class='btn' {{action createTopic}}><i class='fa fa-plus'></i>{{i18n topic.create}}</button>
+      </div>
+    {{/if}}
 
     {{#if showExtraInfo}}
       <div class="extra-info-wrapper">
@@ -38,7 +53,7 @@
           {{#if currentUser}}
             <span class='username'><a {{bind-attr href="currentUser.path"}}>{{currentUser.displayName}}</a></span>
           {{else}}
-            <button {{action showLogin}} class='btn btn-primary btn-small'>{{i18n log_in}}</button>
+            <button {{action showLogin}} class='btn btn-small'>{{i18n log_in}}</button>
           {{/if}}
         </div>
       {{/unless}}
@@ -54,21 +69,6 @@
             {{/if}}
           {{else}}
             <a class='icon' href="#" {{action showLogin}} title='{{i18n notifications.title}}'><i class='fa fa-comment'></i></a>
-          {{/if}}
-        </li>
-        <li>
-          {{#if Discourse.loginRequired}}
-            <a id='search-button' class='icon expand' href='#' {{action showLogin}}>
-              <i class='fa fa-search'></i>
-            </a>
-          {{else}}
-            <a id='search-button'
-               class='icon expand'
-               href='#'
-               data-dropdown="search-dropdown"
-               title='{{i18n search.title}}'>
-               <i class='fa fa-search'></i>
-            </a>
           {{/if}}
         </li>
         <li class='categories dropdown'>
@@ -108,7 +108,6 @@
         </li>
       </ul>
 
-      {{render search}}
 
       {{render notifications notifications}}
 

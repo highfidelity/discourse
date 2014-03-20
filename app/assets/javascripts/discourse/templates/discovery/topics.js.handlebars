@@ -9,35 +9,35 @@
     <table id='topic-list'>
       <thead>
       <tr>
+        {{#sortable-heading sortBy="likes" number=true sortOrder=sortOrder}}
+          <i class="fa fa-heart"></i>
+        {{/sortable-heading}}
         {{#if currentUser}}
         <th>
           {{#if canBulkSelect}}
-          <button class='btn bulk-select' {{action toggleBulkSelect}} title="{{i18n topics.bulk.toggle}}"><i class='fa fa-list'></i></button>
+
           {{/if}}
         </th>
         {{/if}}
         {{#sortable-heading sortBy="default" sortOrder=sortOrder}}
           {{i18n topic.title}}
         {{/sortable-heading}}
-        {{#unless controller.hideCategory}}
+        {{!-- {{#unless controller.hideCategory}}
           {{#sortable-heading sortBy="category" sortOrder=sortOrder}}
             {{i18n category_title}}
           {{/sortable-heading}}
-        {{/unless}}
+        {{/unless}} --}}
         {{#sortable-heading sortBy="posters" sortOrder=sortOrder}}
           {{i18n users}}
         {{/sortable-heading}}
+        {{!-- {{#sortable-heading sortBy="views" number=true sortOrder=sortOrder}}
+          {{i18n views}}
+        {{/sortable-heading}} --}}
+        {{#sortable-heading sortBy="activity" number=true sortOrder=sortOrder}}
+          {{i18n activity}}
+        {{/sortable-heading}}
         {{#sortable-heading sortBy="posts" number=true sortOrder=sortOrder}}
           {{i18n posts}}
-        {{/sortable-heading}}
-        {{#sortable-heading sortBy="likes" number=true sortOrder=sortOrder}}
-          {{i18n likes}}
-        {{/sortable-heading}}
-        {{#sortable-heading sortBy="views" number=true sortOrder=sortOrder}}
-          {{i18n views}}
-        {{/sortable-heading}}
-        {{#sortable-heading sortBy="activity" number=true colspan="2" sortOrder=sortOrder}}
-          {{i18n activity}}
         {{/sortable-heading}}
       </tr>
       </thead>

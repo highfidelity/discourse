@@ -281,9 +281,6 @@ blockquote {
   };
 }
 
-.avatar {
-  @include border-radius-all(2px);
-}
 
 .avatar-wrapper {
   background-color: $primary_background_color;
