@@ -95,3 +95,7 @@ config/version.rb
 bundler_stubs/*
 
 vendor/bundle/*
+
+# sublime text
+discourse.sublime-workspace
+discourse.sublime-project

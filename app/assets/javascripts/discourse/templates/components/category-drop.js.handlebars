@@ -1,5 +1,5 @@
 {{#if category}}
-  <a href="#" {{action expand}} class="badge-category" {{bind-attr style="badgeStyle"}}>
+  <a href="#" {{action expand}} class="badge-category">
     {{#if category.read_restricted}}
       <i class='fa fa-group'></i>
     {{/if}}
@@ -7,6 +7,9 @@
   </a>
 {{else}}
   {{#if noSubcategories}}
+    <a href='#' {{action expand}} class='badge-category home'>{{i18n categories.no_subcategory}}</i></a>
+  {{else}}
+    <a href='#' {{action expand}} class='badge-category home'>{{allCategoriesLabel}}</i></a>
     <a href='#' {{action expand}} class='badge-category home' {{bind-attr style="badgeStyle"}}>{{i18n categories.no_subcategory}}</a>
   {{else}}
     <a href='#' {{action expand}} class='badge-category home' {{bind-attr style="badgeStyle"}}>{{allCategoriesLabel}}</a>
@@ -14,12 +17,8 @@
 {{/if}}
 
 {{#if categories}}
-  <a href='#' {{action expand}} {{bind-attr class="dropdownButtonClass" style="badgeStyle"}}><i {{bind-attr class="iconClass"}}></i></a>
-  <section {{bind-attr class="expanded::hidden :category-dropdown-menu"}} class='chooser'>
-    <div class='cat'><a {{bind-attr href=allCategoriesUrl}} data-drop-close="true" class='badge-category home'>{{allCategoriesLabel}}</a></div>
+    <a {{bind-attr href=allCategoriesUrl}}>{{allCategoriesLabel}}</a>
     {{#if subCategory}}
-    <div class='cat'><a {{bind-attr href=noCategoriesUrl}} data-drop-close="true" class='badge-category home'>{{i18n categories.no_subcategory}}</a></div>
+    <a {{bind-attr href=noCategoriesUrl}}>{{i18n categories.no_subcategory}}</a>
     {{/if}}
-    {{#each categories}}<div class='cat'>{{categoryLink this allowUncategorized=true}}</div>{{/each}}
-  </section>
 {{/if}}

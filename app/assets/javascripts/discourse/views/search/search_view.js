@@ -8,7 +8,7 @@
 **/
 Discourse.SearchView = Discourse.View.extend({
   tagName: 'div',
-  classNames: ['d-dropdown'],
+  classNames: ['dropdown'],
   elementId: 'search-dropdown',
   templateName: 'search',
 
