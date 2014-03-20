@@ -23,7 +23,7 @@ Discourse::Application.configure do
   # Don't Digest assets, makes debugging uglier
   config.assets.digest = false
 
-  config.assets.debug = true
+  config.assets.debug = false
 
   config.watchable_dirs['lib'] = [:rb]
 

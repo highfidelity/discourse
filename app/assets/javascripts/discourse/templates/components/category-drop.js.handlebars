@@ -1,5 +1,5 @@
 {{#if category}}
-  <a href="#" {{action expand}} class="badge-category">
+  <a href="#" {{action expand}} class='badge-category top'>
     {{#if category.read_restricted}}
       <i class='fa fa-group'></i>
     {{/if}}
@@ -7,18 +7,18 @@
   </a>
 {{else}}
   {{#if noSubcategories}}
-    <a href='#' {{action expand}} class='badge-category home'>{{i18n categories.no_subcategory}}</i></a>
+    <a href='#' {{action expand}} class='badge-category top'>{{i18n categories.no_subcategory}}</a>
   {{else}}
-    <a href='#' {{action expand}} class='badge-category home'>{{allCategoriesLabel}}</i></a>
-    <a href='#' {{action expand}} class='badge-category home' {{bind-attr style="badgeStyle"}}>{{i18n categories.no_subcategory}}</a>
-  {{else}}
-    <a href='#' {{action expand}} class='badge-category home' {{bind-attr style="badgeStyle"}}>{{allCategoriesLabel}}</a>
+    <a href='#' {{action expand}} class='badge-category top'>{{allCategoriesLabel}}</a>
   {{/if}}
 {{/if}}
 
 {{#if categories}}
-    <a {{bind-attr href=allCategoriesUrl}}>{{allCategoriesLabel}}</a>
+
+    {{!-- <a {{bind-attr href=allCategoriesUrl}} class='badge-category'>{{allCategoriesLabel}}</a> --}}
     {{#if subCategory}}
     <a {{bind-attr href=noCategoriesUrl}}>{{i18n categories.no_subcategory}}</a>
     {{/if}}
+    {{#each categories}}{{categoryLink this allowUncategorized=true}}{{/each}}
+
 {{/if}}
