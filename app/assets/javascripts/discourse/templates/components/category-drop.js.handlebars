@@ -1,4 +1,4 @@
-{{#if category}}
+{{!--{{#if category}}
   <a href="#" {{action expand}} class="badge-category" {{bind-attr style="badgeStyle"}}>
     {{#if category.read_restricted}}
       <i class='fa fa-group'></i>
@@ -22,4 +22,18 @@
     {{/if}}
     {{#each categories}}<div class='cat'>{{categoryLink this allowUncategorized=true}}</div>{{/each}}
   </section>
+{{/if}} --}}
+
+{{#if categories}}
+<div id="topic-categories">
+  <div class='cat'><a {{bind-attr href=allCategoriesUrl}} data-drop-close="true" class='badge-category home'>{{allCategoriesLabel}}</a></div>
+
+  {{#if subCategory}}
+  <div class='cat'><a {{bind-attr href=noCategoriesUrl}} data-drop-close="true" class='badge-category home'>{{i18n categories.no_subcategory}}</a></div>
+  {{/if}}
+
+  {{#each categories}}
+    <div class='cat'>{{categoryLink this allowUncategorized=true}}</div>
+  {{/each}}
+</div>
 {{/if}}

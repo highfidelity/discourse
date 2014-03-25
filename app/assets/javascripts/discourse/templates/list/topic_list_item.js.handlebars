@@ -1,3 +1,9 @@
+<td class='num likes'>
+  {{#if like_count}}
+    <a href='{{url}}{{#if has_summary}}?filter=summary{{/if}}' title='{{i18n topic.likes count="like_count"}}'>{{number like_count numberKey="likes_long"}} {{!-- <i class='fa fa-heart'></i> --}}</a>
+  {{/if}}
+</td>
+
 {{#if bulkSelectEnabled}}
   <td class='star'>
     {{input type="checkbox" checked=checked}}
@@ -10,7 +16,7 @@
   {{/if}}
 {{/if}}
 
-<td class='main-link clearfix' {{bind-attr colspan="titleColSpan"}}>
+<td class='main-link clearfix' colspan="2">
   {{topicStatus topic=this}}
   {{{topicLink this}}}
   {{#if unread}}
@@ -36,9 +42,9 @@
   {{/if}}
 </td>
 
-{{#unless hideCategory}}
+{{!-- {{#unless hideCategory}}
 <td class='category'>{{boundCategoryLink category}}</td>
-{{/unless}}
+{{/unless}} --}}
 
 <td class='posters'>
   {{#each posters}}
@@ -46,26 +52,20 @@
   {{/each}}
 </td>
 
-<td class='num posts'><a href="{{lastUnreadUrl}}" class='badge-posts'>{{number posts_count numberKey="posts_long"}}</a></td>
-
-<td class='num likes'>
-  {{#if like_count}}
-    <a href='{{url}}{{#if has_summary}}?filter=summary{{/if}}' title='{{i18n topic.likes count="like_count"}}'>{{number like_count numberKey="likes_long"}} <i class='fa fa-heart'></i></a>
-  {{/if}}
-</td>
-
-<td {{bind-attr class=":num :views viewsHeat"}}>{{number views numberKey="views_long"}}</td>
+{{!-- <td {{bind-attr class=":num :views viewsHeat"}}>{{number views numberKey="views_long"}}</td> --}}
 
 {{#if bumped}}
-  <td class='num activity'>
+  {{!-- <td class='num activity'>
     <a href="{{url}}" class="{{coldAgeClass created_at}}" title='{{i18n first_post}}: {{{rawDate created_at}}}' >{{unboundAge created_at}}</a>
-  </td>
-  <td class='num activity last'>
+  </td> --}}
+  <td class='num activity'>
     <a href="{{lastPostUrl}}" class="{{coldAgeClass bumped_at}}" title='{{i18n last_post}}: {{{rawDate bumped_at}}}'>{{unboundAge bumped_at}}</a>
   </td>
 {{else}}
   <td class='num activity'>
     <a href="{{url}}" class="{{coldAgeClass created_at}}" title='{{i18n first_post}}: {{{rawDate created_at}}}'>{{unboundAge created_at}}</a>
   </td>
-  <td class='activity'></td>
+  {{!-- <td class='activity'></td> --}}
 {{/if}}
+
+<td class='num posts last'><a href="{{lastUnreadUrl}}" class='badge-posts'>{{number posts_count numberKey="posts_long"}}</a></td>
